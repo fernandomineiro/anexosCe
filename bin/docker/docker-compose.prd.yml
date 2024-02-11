@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  nscanexos:
+    volumes: 
+      - vol-anexos:/logs 
+    deploy:
+        resources:
+            limits:
+              cpus: 4.00
+              memory: 8192M
+      
+volumes:
+  vol-anexos:
+    driver_opts: 
+      type: "nfs"
+      o: "addr=nfs-siscom.sistemas.cesan.com.br,nolock,soft,rw"
+      device: ":/nfs/nsc/anexos/logs"
+
